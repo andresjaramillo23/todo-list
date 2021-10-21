@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 
 const TodoList = () => {
 	const [inputValue, setInputValue] = useState("");
-	const [inputList, setInputList] = useState(["", ""]);
+	const [inputList, setInputList] = useState(["nana", ""]);
 
-	function addItem() {
-		setInputValue(inputValue);
-		const list = inputList.concat(inputValue);
-		setInputList(list);
-		console.log(inputList);
+	function addItem(e) {
+		if (e.keyCode == 13) {
+			setInputValue(inputValue);
+			const list = inputList.concat(inputValue);
+			setInputList(list);
+		}
 	}
 
 	return (
@@ -18,7 +19,9 @@ const TodoList = () => {
 				type="text"
 				value={inputValue}
 				onChange={e => setInputValue(e.target.value)}
+				onKeyUp={addItem}
 			/>
+			<div>{inputList}</div>
 		</div>
 	);
 };
