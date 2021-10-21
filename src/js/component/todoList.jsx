@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const TodoList = () => {
 	const [inputValue, setInputValue] = useState("");
-	const [inputList, setInputList] = useState(["nana", ""]);
+	const [inputList, setInputList] = useState(["Abraham", "Elsa"]);
 
 	function addItem(e) {
 		if (e.keyCode == 13) {
@@ -21,7 +21,11 @@ const TodoList = () => {
 				onChange={e => setInputValue(e.target.value)}
 				onKeyUp={addItem}
 			/>
-			<div>{inputList}</div>
+			<div className="text-center mt-5">
+				{inputList.map(todo => (
+					<li key={todo}>{todo}</li>
+				))}
+			</div>
 		</div>
 	);
 };
