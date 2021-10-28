@@ -12,6 +12,10 @@ const TodoList = () => {
 		}
 	}
 
+	const deleteItem = index => {
+		setInputList(inputList.filter((item, i) => index != i));
+	};
+
 	return (
 		<div className="text-center mt-5">
 			<h1>Hello Moto!</h1>
@@ -22,8 +26,17 @@ const TodoList = () => {
 				onKeyUp={addItem}
 			/>
 			<div className="text-center mt-5">
-				{inputList.map(todo => (
-					<li key={todo}>{todo}</li>
+				{inputList.map((item, index) => (
+					<>
+						<li key={index}>
+							{item}
+							<button onClick={() => deleteItem(index)}>
+								<i
+									className="fa fa-times"
+									aria-hidden="true"></i>
+							</button>
+						</li>
+					</>
 				))}
 			</div>
 		</div>
