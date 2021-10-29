@@ -12,6 +12,10 @@ const TodoList = () => {
 		}
 	}
 
+	function deleteAll() {
+		setInputList([]);
+	}
+
 	const deleteItem = index => {
 		setInputList(inputList.filter((item, i) => index != i));
 	};
@@ -39,6 +43,13 @@ const TodoList = () => {
 					</>
 				))}
 			</div>
+			<div>
+				<input
+					type="button"
+					value="delete all"
+					onClick={() => deleteAll()}></input>
+			</div>
+			;
 		</div>
 	);
 };
