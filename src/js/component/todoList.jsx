@@ -9,6 +9,7 @@ const TodoList = () => {
 			setInputValue(inputValue);
 			const list = inputList.concat(inputValue);
 			setInputList(list);
+			setInputValue("");
 		}
 	}
 
@@ -49,7 +50,6 @@ const TodoList = () => {
 					value="delete all"
 					onClick={() => deleteAll()}></input>
 			</div>
-			;
 		</div>
 	);
 };
