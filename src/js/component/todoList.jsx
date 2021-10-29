@@ -21,9 +21,20 @@ const TodoList = () => {
 		setInputList(inputList.filter((item, i) => index != i));
 	};
 
+	function displayTask(int) {
+		int;
+	}
+
 	return (
 		<div className="text-center mt-5">
 			<h1>Hello Moto!</h1>
+			<h3>
+				{inputList.length == 0
+					? "No task to display"
+					: inputList.length == 1
+					? "There is one task left"
+					: "The number of tasks left is: " + inputList.length}
+			</h3>
 			<input
 				type="text"
 				value={inputValue}
