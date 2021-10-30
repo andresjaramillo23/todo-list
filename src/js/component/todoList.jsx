@@ -4,16 +4,16 @@ const TodoList = () => {
 	const [inputValue, setInputValue] = useState("");
 	const [inputList, setInputList] = useState([]);
 
-	// useEffect(() => {
-	// 	fetch("https://assets.breatheco.de/apis/fake/todos/user/santaMaria")
-	// 		.then(response => {
-	// 			if (!response.ok) {
-	// 				throw new Error(response.statusText);
-	// 			}
-	// 			return response.json();
-	// 		})
-	// 		.then(data => setInputList(data));
-	// }, []); //empty array means it will only run once
+	useEffect(() => {
+		fetch("https://assets.breatheco.de/apis/fake/todos/user/13")
+			.then(response => {
+				if (!response.ok) {
+					throw new Error(response.statusText);
+				}
+				return response.json();
+			})
+			.then(data => setInputList(data));
+	}, []); //empty array means it will only run once
 
 	function addItem(e) {
 		if (e.keyCode == 13) {
@@ -22,20 +22,15 @@ const TodoList = () => {
 			setInputList(list);
 			setInputValue("");
 
-			fetch(
-				"https://assets.breatheco.de/apis/fake/todos/user/santaMaria",
-				{
-					method: "POST",
-					body: JSON.stringify(list),
-					headers: {
-						"Content-Type": "application/json"
-					}
+			fetch("https://assets.breatheco.de/apis/fake/todos/user/13", {
+				method: "PUT",
+				body: JSON.stringify(list),
+				headers: {
+					"Content-Type": "application/json"
 				}
-			).then(response => {
+			}).then(response => {
 				if (response.ok) {
-					fetch(
-						"https://assets.breatheco.de/apis/fake/todos/user/santaMaria"
-					)
+					fetch("https://assets.breatheco.de/apis/fake/todos/user/13")
 						.then(response => {
 							if (!response.ok) {
 								throw new Error(response.statusText);
@@ -56,16 +51,13 @@ const TodoList = () => {
 	const deleteItem = index => {
 		let newList = setInputList(inputList.filter((item, i) => index != i));
 
-		fetch(
-			"https://assets.breatheco.de/apis/fake/todos/user/pandapandapanda",
-			{
-				method: "PUT",
-				body: JSON.stringify(newList),
-				headers: {
-					"Content-Type": "application/json"
-				}
+		fetch("https://assets.breatheco.de/apis/fake/todos/user/13", {
+			method: "PUT",
+			body: JSON.stringify(newList),
+			headers: {
+				"Content-Type": "application/json"
 			}
-		)
+		})
 			.then(response => console.log(response))
 			.catch(error => console.error(error));
 	};
